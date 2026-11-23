@@ -14,7 +14,7 @@ Entry for the [make.fun bounty](https://make.fun/bounty/u-gentle-badger-68-make-
 
 ## How it works
 
-`main.ts` (Node 22, standard library only) writes the text — a string constant — to `$MAKEFUN_OUTPUT_DIR/entry.txt` (default `/output`). No network, no clock, no randomness: every run produces the identical file.
+`main.ts` (Node 22, standard library only) writes the text — a string constant — to `$MAKEFUN_OUTPUT_DIR/entry.txt` (default `/output`). Before writing, it checks the competition gate (1–200 characters, non-empty) and throws instead of writing an invalid entry. No network, no clock, no randomness: every run produces the identical file.
 
 Run it locally:
 

@@ -35,5 +35,12 @@ import { join } from 'node:path';
 const TEXT = 'At 7 a.m. in the rain, the old man at the bus stop shared his umbrella, then waved off my thanks like I had done him the favour.';
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+
+// Gate check (competition rules: 1–200 characters, one line, non-empty):
+// refuse to write anything that would violate the gate, instead of
+// silently producing an invalid entry.
+if (TEXT.length === 0 || TEXT.length > 200) {
+  throw new Error(`entry text must be 1-200 characters, got ${TEXT.length}`);
+}
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, 'entry.txt'), TEXT, 'utf8');
